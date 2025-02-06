@@ -1,0 +1,64 @@
+/* Family Tree Styles */
+.connection-line {
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.connection-line.spouse {
+  stroke: #FF0000;
+  stroke-width: 2px;
+}
+
+.connection-line.family {
+  stroke: #000000;
+  stroke-width: 1px;
+}
+
+.connection-line.highlighted {
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+}
+
+.connection-line.dragging {
+  opacity: 0.3;
+}
+
+.heart-icon {
+  transition: all 0.3s ease;
+}
+
+.heart-icon.highlighted {
+  transform: scale(1.2);
+}
+
+.family-member-card {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.family-member-card:hover {
+  transform: translateY(-2px);
+}
+
+.family-member-card.connecting {
+  cursor: pointer;
+}
+
+.family-member-card.connecting:hover {
+  box-shadow: 0 0 0 2px #000000, 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.connection-indicator {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}

@@ -1,0 +1,84 @@
+.family-member-card {
+  @apply bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition-all duration-300 w-64 absolute cursor-move;
+  border: 2px solid transparent;
+}
+
+.family-member-card:hover {
+  @apply border-gray-300;
+}
+
+.card-header {
+  @apply flex items-center mb-3 relative;
+}
+
+.member-avatar {
+  @apply w-16 h-16 rounded-full mr-3 overflow-hidden border-2 border-black flex items-center justify-center bg-gray-100;
+}
+
+.avatar-image {
+  @apply w-full h-full object-cover;
+}
+
+.avatar-placeholder {
+  @apply w-8 h-8 text-black;
+}
+
+.member-info {
+  @apply flex-grow;
+}
+
+.member-name {
+  @apply text-lg font-semibold text-gray-800 leading-tight;
+}
+
+.member-type {
+  @apply text-sm text-black capitalize;
+}
+
+.edit-button {
+  @apply absolute top-0 right-0 text-gray-400 hover:text-black transition-colors duration-200;
+}
+
+.member-details {
+  @apply mt-2 text-sm text-gray-600 space-y-2 bg-gray-50 p-3 rounded-md;
+}
+
+.detail-item {
+  @apply flex items-center;
+}
+
+.detail-item svg {
+  @apply w-4 h-4 mr-2 text-black;
+}
+
+.card-actions {
+  @apply mt-4 flex justify-between items-center;
+}
+
+.view-profile-link {
+  @apply text-black hover:text-gray-800 hover:underline text-sm font-medium transition-colors duration-200;
+}
+
+.connection-button {
+  @apply text-black hover:text-gray-800 flex items-center text-sm font-medium px-2 py-1 rounded-md transition-all duration-200;
+}
+
+.connection-button:hover {
+  @apply bg-gray-100;
+}
+
+.connection-button.active {
+  @apply bg-black text-white;
+}
+
+.connection-button svg {
+  @apply mr-1;
+}
+
+.expand-button {
+  @apply mt-3 w-full text-black hover:text-gray-800 flex items-center justify-center transition-colors duration-200;
+}
+
+.expand-button:hover {
+  @apply bg-gray-50 rounded-md;
+}

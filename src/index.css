@@ -1,0 +1,115 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 bg-gray-100;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-colors duration-200 font-medium text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 hover:bg-gray-100;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1 text-xs;
+  }
+}
+
+.family-member-card {
+  @apply bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition-all duration-300 w-64 absolute cursor-move;
+}
+
+.family-member-card:hover {
+  @apply shadow-xl;
+}
+
+.card-header {
+  @apply flex items-center mb-3 relative;
+}
+
+.member-avatar {
+  @apply w-16 h-16 rounded-full mr-3 overflow-hidden border-2 border-primary flex items-center justify-center bg-gray-100;
+}
+
+.avatar-image {
+  @apply w-full h-full object-cover;
+}
+
+.avatar-placeholder {
+  @apply w-8 h-8 text-primary;
+}
+
+.member-info {
+  @apply flex-grow;
+}
+
+.member-name {
+  @apply text-lg font-semibold text-gray-800 leading-tight;
+}
+
+.member-type {
+  @apply text-sm text-primary capitalize;
+}
+
+.edit-button {
+  @apply absolute top-0 right-0 text-gray-400 hover:text-primary transition-colors duration-200;
+}
+
+.member-details {
+  @apply mt-2 text-sm text-gray-600 space-y-2 bg-gray-50 p-3 rounded-md;
+}
+
+.detail-item {
+  @apply flex items-center;
+}
+
+.detail-item svg {
+  @apply w-4 h-4 mr-2 text-primary;
+}
+
+.card-actions {
+  @apply mt-4 flex justify-between items-center;
+}
+
+.view-profile-link {
+  @apply text-primary hover:text-primary-hover hover:underline text-sm font-medium transition-colors duration-200;
+}
+
+.connection-button {
+  @apply text-primary hover:text-primary-hover flex items-center text-sm font-medium px-2 py-1 rounded-md transition-all duration-200;
+}
+
+.connection-button:hover {
+  @apply bg-primary-light;
+}
+
+.connection-button.active {
+  @apply bg-primary text-white;
+}
+
+.connection-button svg {
+  @apply mr-1;
+}
+
+.expand-button {
+  @apply mt-3 w-full text-primary hover:text-primary-hover flex items-center justify-center transition-colors duration-200;
+}
+
+.expand-button:hover {
+  @apply bg-primary-light rounded-md;
+}

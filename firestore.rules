@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(treeId) {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/trees/$(treeId)).data.ownerId == request.auth.uid;
+    }
+    
+    function isAdmin(treeId) {
+      return isAuthenticated() && 
+        (isOwner(treeId) || 
+         get(/databases/$(database)/documents/trees/$(treeId)).data.admins[request.auth.uid] == true);
+    }
+    
+    function isMember(treeId) {
+      return isAuthenticated() && 
+        (isAdmin(treeId) || 
+         get(/databases/$(database)/documents/trees/$(treeId)).data.members[request.auth.uid] == true);
+    }
+
+    // Tree rules
+    match /trees/{treeId} {
+      allow read: if isMember(treeId);
+      allow create: if isAuthenticated();
+      allow update: if isAdmin(treeId);
+      allow delete: if isOwner(treeId);
+      
+      // Tree members subcollection
+      match /members/{memberId} {
+        allow read: if isMember(treeId);
+        allow write: if isAdmin(treeId);
+      }
+    }
+
+    // Invite rules
+    match /invites/{inviteId} {
+      allow create: if isAuthenticated() && 
+        (isAdmin(request.resource.data.treeId) || 
+         request.resource.data.inviterId == request.auth.uid);
+      allow read: if isAuthenticated() && 
+        (resource.data.email == request.auth.email || 
+         isAdmin(resource.data.treeId));
+      allow update: if isAuthenticated() && 
+        (resource.data.email == request.auth.email || 
+         isAdmin(resource.data.treeId));
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}
